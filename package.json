@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
+    "all":"npm test & npm start & npm run run",
     "test": "live-server --open=./SpecRunner.html --port=8081",
     "start": "npx babel . --watch --out-dir=compiled --presets=@babel/preset-react --ignore=node_modules,compiled --source-maps=inline",
     "run": "npx live-server"
