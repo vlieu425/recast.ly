@@ -4,30 +4,45 @@ import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
 const { useState, useEffect } = React;
 import Search from './Search.js';
-// import searchYouTube from '../lib/searchYouTube.js';
+import searchYouTube from '../lib/searchYouTube.js';
+
 
 var App = () => {
-
-  const [videos, setVideos] = useState(exampleVideoData);
-  const [currentVideo, setCurrentVideo] = useState
-  (exampleVideoData[0]);
+//set state forvideos and current videos
+//videos is the list of videos
+//currentVideo is current video on video player
+  const [videos, setVideos] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState(null);
   //state for search bar value
-  const [currentSearch, setCurrentSearch] = useState();
+  const [currentSearch, setCurrentSearch] = useState('');
   //function handles "search"
+  //sets currentVideo to target value
   var handleSearch = function(e, targetValue) {
     e.preventDefault();
     setCurrentSearch(targetValue);
-    console.log(currentSearch);
   };
 
-  // searchYouTube(currentSearch, (data) => {console.log(data)});
+//renders and makes changes to the DOM based on changes of state/dependicies
+//once state is changed it invokes the first callback function
+//within this function it sets video andcurrent video to the data that is obtained from API call
+  useEffect(() => {
+    //setTimeout(() => {
+    searchYouTube(currentSearch, (data) => {
+      setVideos(data);
+      setCurrentVideo(data[0]);
+    });
+    //}, 1000);
+  }, [currentSearch]);
 
-
+  //handles title click
+  //passes down prop to child element
   var handleClick = function(e, video) {
     e.preventDefault();
     setCurrentVideo(video);
   };
 
+
+//
   return (
     <div>
       <nav className="navbar">

@@ -1,4 +1,4 @@
-var VideoListEntry = (props) => (
+var VideoListEntry = (props) => {
 
 
   //props.video.snippet.thumbnails.default.url
@@ -12,7 +12,7 @@ var VideoListEntry = (props) => (
       <div className="video-list-entry-detail">{props.video.snippet.description}</div>
     </div>
   </div>
-);
+};
 
 
 

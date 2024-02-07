@@ -9,21 +9,21 @@ var searchYouTube = (query, callback, errorCB = null) => {
   var url = "https://app-hrsei-api.herokuapp.com/api/recastly/videos";
 
 
-  // $.ajax({
-  //   url: url,
-  //   type: 'GET',
-  //   data: {query: query},
-  //   contentType: 'application/json',
-  //   success: (data) => {
-  //     console.log(data);
-  //     callback(data);
-  //   },
-  //   error: errorCB || function(error) {
-  //     console.error('Failed to fetch videos', error);
-  //   }
+  $.ajax({
+    url: url,
+    type: 'GET',
+    data: {q: query},
+    contentType: 'application/json',
+    success: (data) => {
+      console.log(data);
+      callback(data);
+    },
+    error: errorCB || function(error) {
+      console.error('Failed to fetch videos', error);
+    }
 
 
-  // });
+  });
 
 
 };

@@ -3,8 +3,8 @@ var currentSearch;
 
   return (
     <div className="search-bar form-inline">
-      <input className="form-control" type="text" onChange={(e) => currentSearch = e.target.value}/>
-      <button onClick={(e) => props.submitClick(e, currentSearch)} className="btn hidden-sm-down">
+      <input className="form-control" type="text" onChange={(e) => props.submitClick(e, e.target.value)}/>
+      <button className="btn hidden-sm-down">
         <span className="glyphicon glyphicon-search"></span>
       </button>
     </div>
